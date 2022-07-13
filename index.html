@@ -29,6 +29,7 @@
         </style>
     </head>
     <body>
+<input type="button" class="btn" id="logout" onclick="logout()" value="Logout">
         <script type="text/javascript" lang="javascript">
             //login conditions check
             var username = sessionStorage.getItem('username')
@@ -46,6 +47,11 @@
 
             }
             
+//Logout
+function logout(){
+sessionStorage.clear();
+window.location.href="login.html"
+}
         </script>
     </body>
 </html>
