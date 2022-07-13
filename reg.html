@@ -75,8 +75,15 @@
 <script type="text/javascript" lang="javascript">
   //register
 
+  var usernameArray = JSON.parse(localStorage.getItem('username')
+  var passwordArray = JSON.parse(localStorage.getItem('password')
+
+  if (usernameArray == null){
+
   var usernameArray = [];
   var passwordArray = [];
+
+}
 
   function reg(){
 
