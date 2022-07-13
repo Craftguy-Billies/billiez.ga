@@ -11,8 +11,8 @@
     <body>
         <script type="text/javascript" lang="javascript">
             //login conditions check
-            sessionStorage.getItem('username')
-            sessionStorage.getItem('password')
+            var username = sessionStorage.getItem('username')
+            var password =sessionStorage.getItem('password')
 
             if (password == null){
                 window.location.href="login.html"
