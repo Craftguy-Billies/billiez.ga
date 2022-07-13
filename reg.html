@@ -75,15 +75,12 @@
 <script type="text/javascript" lang="javascript">
   //register
 
-  var usernameArray = JSON.parse(localStorage.getItem('username')
-  var passwordArray = JSON.parse(localStorage.getItem('password')
+  var usernameArray = JSON.parse(localStorage.getItem('username');
+  var passwordArray = JSON.parse(localStorage.getItem('password');
 
-  if (usernameArray == null){
-
+  if (passwordArray == null){
   var usernameArray = [];
   var passwordArray = [];
-
-}
 
   function reg(){
 
@@ -140,7 +137,65 @@
       window.location.href="login.html"
     }
   }
+}
 
+else{
+  function reg(){
+
+    event.preventDefault();
+
+    var username = document.getElementById("user").value
+    var password = document.getElementById("pw").value
+    var confirmedPassword = document.getElementById("confirmpw").value
+
+    console.log(usernameArray.indexOf(username))
+
+    var i = usernameArray.indexOf(username);
+
+    if (document.getElementById("user").value == ""){
+      alert('username is required')
+      return;
+    }
+
+    else if (document.getElementById("pw").value == ""){
+      alert('password is required')
+      return;
+    }
+
+    else if(document.getElementById("confirmpw").value == ""){
+      alert('this field is required')
+      return;
+    }
+
+    else if (password != confirmedPassword){
+      alert('password does not match')
+
+      document.getElementById("pw").value = ""
+      document.getElementById("confirmpw").value = ""
+
+      return;
+    }
+
+    else if (usernameArray.indexOf(username) == -1){
+      usernameArray.push(username);
+      passwordArray.push(password);
+
+      window.localStorage.setItem('username',JSON.stringify(usernameArray))
+      window.localStorage.setItem('password',JSON.stringify(passwordArray))
+
+      console.log(JSON.parse(localStorage.getItem('username')))
+      console.log(JSON.parse(localStorage.getItem('password')))
+
+      alert('You have successfully registered. Please proceed to the login page!')
+      window.location.href="login.html"
+       }
+
+    else{
+      alert('username already exist, please proceed to login page!')
+      window.location.href="login.html"
+    }
+  }
+}
 </script>
 
     </body>
