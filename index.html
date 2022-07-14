@@ -70,6 +70,18 @@ window.location.href="login.html"
 //welcome words
 var cappedusername = username.toUpperCase()
 document.getElementById('welcome').innerHTML = "Welcome, " + cappedusername + "!"
+
+// Set a Cookie
+let username = 'website visitor';
+
+function setCookie(cName, cValue, expDays) {
+        let date = new Date();
+        date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
+}
+// Apply setCookie
+setCookie('username', username, 30);
         </script>
     </body>
 </html>
