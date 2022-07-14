@@ -39,17 +39,35 @@ body{
     text-decoration:underline;
 }
 
-.count{
-    color: #000;
-    font-family:Consolas;
-    font-size: 20px;
+        </style>
+        <script type="text/javascript" lang="javascript">
+//cookie
+var cookie = document.cookie;
+If (cookie != null && cookie != undefined){
+If (cookie.length>0){
+var imageSeen = cookie.split(";")[0].split("=")[1];
+var seenCount= parseInt(cookie.split(";")[1].split("=")[1]);
+
+//Not first time visit!!
+seenCount++;
+
+ImageToShow= imageSeen;//just do wtv u need to to show the imageSeen
+
+//Then save the cookie again
+
+document.cookie = "image=green;visited="+seenCount+";";
+
+
+}}
+else{
+//Treat as first time visit
+document.cookie = "image=green;visited=1;";
 }
 
-        </style>
+</script>
     </head>
-    <body onload="doCookie()">
+    <body>
 <div class="welcome" id="welcome"></div>
-<div class="count" id="count"></div>
 <input type="button" class="btn" id="logout" onclick="logout()" value="Logout">
         <script type="text/javascript" lang="javascript">
             //login conditions check
@@ -77,76 +95,7 @@ window.location.href="login.html"
 //welcome words
 var cappedusername = username.toUpperCase()
 document.getElementById('welcome').innerHTML = "Welcome, " + cappedusername + "!"
-document.getElementById('count').innerHTML = "You have been to my site " + gettimes() + " before."
 </script>
-
-
-<script type="text/javascript" lang="javascript">
-
-//This starts the script then hides it from lesser browsers.
-
-cookie_name = "Counter_Cookie";
-//The cookie name is set as Counter_Cookie. If you're going to put this onto other pages to count them, change this with a new name.
-
-function doCookie() {
-if(document.cookie)
-{index = document.cookie.indexOf(cookie_name);}
-//Is there a cookie named Counter_Cookie? If so, use that.
-
-else
-{index = -1;}
-//If there isn't, set the index to minus one (-1).
-
-var expires = "Monday, 04-Apr-2010 05:00:00 GMT"
-//A variable is set up to represent the expires date.
-
-if (index == -1)
-{document.cookie=cookie_name+"=1; expires=" + expires;}
-//If the index was set to minus one, then set the cookie with the name Counter_Cookie, a number 1, then the expires date.
-
-else
-{
-countbegin = (document.cookie.indexOf("=", index) + 1);
-countend = document.cookie.indexOf(";", index);
-if (countend == -1) {
-countend = document.cookie.length;
-}
-count = eval(document.cookie.substring(countbegin, countend)) + 1;
-
-document.cookie=cookie_name+"="+count+"; expires=" + expires;
-}
-}
-
-
-
-function gettimes() {
-//This starts the second function that gets the value in the cookie and assigns it to a variable name.
-
-if(document.cookie) {
-index = document.cookie.indexOf(cookie_name);
-if (index != -1) {
-countbegin = (document.cookie.indexOf("=", index) + 1);
-countend = document.cookie.indexOf(";", index);
-//Grab the second piece of information in the cookie, the number (see the +1?).
-
-if (countend == -1) {
-countend = document.cookie.length;
-}
-count = document.cookie.substring(countbegin, countend);
-if (count == 1) {
-return (count+" time");
-} else {
-return (count+" times");
-//If the count is one, then return the singular "time." If the count is more, return the plural "times."
-
-}
-}
-}
-return ("0 times");
-//If the number is 0, then return "0 times."
-
-}
-
         </script>
     </body>
 </html>
