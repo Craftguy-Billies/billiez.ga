@@ -45,11 +45,21 @@ body{
     font-size: 20px;
 }
 
+#pwchange{
+    background-color: rgb(168, 212, 242);
+}
+
+#pwchange:hover,
+#pwchange:active{
+    background-color: blue;
+}
+
         </style>
     </head>
     <body onload="doCookie()">
 <div class="welcome" id="welcome"></div>
 <div class="count" id="count"></div>
+<input type="button" class="btn" id="pwchange" onclick="changepw()" value="Change Password">
 <input type="button" class="btn" id="logout" onclick="logout()" value="Logout">
         <script type="text/javascript" lang="javascript">
             //login conditions check
@@ -78,6 +88,12 @@ window.location.href="login.html"
 var cappedusername = username.toUpperCase()
 document.getElementById('welcome').innerHTML = "Welcome, " + cappedusername + "!"
 document.getElementById('count').innerHTML = "You have been to my site " + gettimes() + " before."
+
+//change password
+function changepw(){
+    window.location.href="changepassword.html"
+}
+
 </script>
 
 
