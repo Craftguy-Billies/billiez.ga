@@ -72,8 +72,6 @@ var cappedusername = username.toUpperCase()
 document.getElementById('welcome').innerHTML = "Welcome, " + cappedusername + "!"
 
 // Set a Cookie
-let username = 'website visitor';
-
 function setCookie(cName, cValue, expDays) {
         let date = new Date();
         date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
@@ -81,7 +79,7 @@ function setCookie(cName, cValue, expDays) {
         document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
 }
 // Apply setCookie
-setCookie('username', username, 30);
+setCookie(visitor, visitor, 30);
         </script>
     </body>
 </html>
