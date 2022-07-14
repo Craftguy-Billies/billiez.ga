@@ -5,6 +5,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <style>
+body{
+    background-color:antiquewhite
+}
 
  .btn{
     margin-left:10px;
@@ -27,9 +30,18 @@
   background-color: rgba(162, 180, 61,0.8);
 }
 
+.welcome{
+    text-align:center;
+    color: #000;
+    font-size: 5vw;
+    font-weight:550;
+    text-decoration:underline;
+}
+
         </style>
     </head>
     <body>
+<div class="welcome" id="welcome"></div>
 <input type="button" class="btn" id="logout" onclick="logout()" value="Logout">
         <script type="text/javascript" lang="javascript">
             //login conditions check
@@ -53,6 +65,10 @@ function logout(){
 sessionStorage.clear();
 window.location.href="login.html"
 }
+
+//welcome words
+var cappedusername = username.toUpperCase()
+document.getElementById('welcome').innerHTML = "Welcome, " + cappedusername + "!"
         </script>
     </body>
 </html>

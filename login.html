@@ -72,6 +72,14 @@
   background-color:rgb(67, 165, 133);
 }
 
+#fpw{
+  background-color: rgb(162, 185, 250);
+}
+
+#fpw:hover,
+#fpw:active{
+  background-color: rgb(98, 124, 194);
+}
 </style>
 </head>
 <body>
@@ -87,12 +95,23 @@
 </form>
 <input type="button" class="btn" id="btn" onclick="login()" value="Login">
 <input type="button" class="btn" id="goreg" onclick="goreg()" value="Register a new account">
+<input type="button" class="btn" id="fpw" onclick="fpw()" value="Forgot password?">
 
 
 <script type="text/javascript" lang="javascript">
 //login
-var usernameArray = JSON.parse(localStorage.getItem('username'))
-var passwordArray = JSON.parse(localStorage.getItem('password'))
+var x = JSON.parse(localStorage.getItem('username'))
+var y = JSON.parse(localStorage.getItem('password'))
+
+if (JSON.parse(localStorage.getItem('password')) == null){
+  var usernameArray = [];
+  var passwordArray = [];
+}
+
+else{
+  var usernameArray = JSON.parse(localStorage.getItem('username'))
+  var passwordArray = JSON.parse(localStorage.getItem('password'))
+}
 
 console.log(usernameArray)
 console.log(passwordArray)
@@ -113,40 +132,46 @@ function login(){
   var i = usernameArray.indexOf(username)
 
   if (document.getElementById("user").value == ""){
-    alert('username is required')
+    alert('Username is required')
     return;
   }
 
   else if (document.getElementById("pw").value == ""){
-    alert('password is required')
+    alert('Password is required')
     return;
   }
   
   else if (username.length < 4){
-    alert('username should be at least 4 characters long!')
+    alert('Username should be at least 4 characters long!')
+    document.getElementById("user").value = ""
     return;
   }
 
   else if (password.length < 8){
-    alert('password should be at least 8 characters long!')
+    alert('Password should be at least 8 characters long!')
+    document.getElementById("pw").value = ""
     return;
   }
 
   else if(usernameArray.indexOf(username) == -1){
-    alert('username does not exist')
+    alert('Username does not exist')
     return;
   }
 
   else if(passwordArray[i] != password){
-    alert('wrong password')
+    alert('Wrong password')
+    document.getElementById("pw").value = ""
   }
 
   else{
-    alert('welcome, ' + username)
+    alert('Welcome, ' + username)
     window.location.href="index.html"
 
     sessionStorage.setItem('username',username)
     sessionStorage.setItem('password',password)
+
+    document.getElementById("user").value = ""
+    document.getElementById("pw").value = ""
   }
 
 }
@@ -171,6 +196,12 @@ else if (password == undefined){
 else{
   window.location.href="index.html"
 }
+
+//forgot password
+function fpw(){
+  window.location.href = "passwordrecovery.html"
+}
+
 </script>
 </body>
 </html>
