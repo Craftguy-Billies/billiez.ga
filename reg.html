@@ -52,13 +52,20 @@
     cursor:pointer;
  }
 
-.btn:hover{
+.btn:hover,
+.btn:active{
   background-color: rgba(61, 71, 180, 0.8);
 }
 
-#clear{
-  background-color: rgb(209, 255, 233);
+#lgnpg{
+  background-color: rgb(237, 210, 128);
 }
+
+#lgnpg:hover,
+#lgnpg:active{
+  background-color:rgb(198, 170, 83)
+}
+
         </style>
     </head>
     <body>
@@ -70,7 +77,8 @@
             <div>Password:&nbsp;&nbsp;<input type="text" id="pw" class="box" value=""></div></div>
             </form>
             <div style="color:#000;font-size:20px;font-family: Consolas;margin-left:10px;margin-top:10px;">Confirm Password:&nbsp;&nbsp;<input type="text" id="confirmpw" class="box" value=""></div></div>
-            <input type="button" class="btn" id="btn" onclick="reg()" value="Register!">      
+            <input type="button" class="btn" id="btn" onclick="reg()" value="Register!"> 
+            <input type="button" class="btn" id="lgnpg" onclick="login()" value="Proceed to login page!!">       
 
 <script type="text/javascript" lang="javascript">
   //register
@@ -93,11 +101,17 @@
 
     event.preventDefault();
 
-    var username = document.getElementById("user").value
-    var password = document.getElementById("pw").value
-    var confirmedPassword = document.getElementById("confirmpw").value
+    var usernameUntrimmed = document.getElementById("user").value
+    var passwordUntrimmed = document.getElementById("pw").value
+    var confirmedPasswordUntrimmed = document.getElementById("confirmpw").value
 
-    console.log(usernameArray.indexOf(username))
+    var usernameCap = usernameUntrimmed.trim()
+    var passwordCap = usernameUntrimmed.trim()
+    var confirmedCap = confirmedPasswordUntrimmed.trim()
+
+    var username = usernameCap.toLowerCase()
+    var password = passwordCap.toLowerCase()
+    var confirmedPassword = confirmedCap.toLowerCase()
 
     var i = usernameArray.indexOf(username);
 
@@ -125,6 +139,23 @@
       return;
     }
 
+    else if (username.length < 4){
+      alert('your username is too short!')
+
+      document.getElementById("username").value = ""
+
+      return;
+    }
+
+    else if (password.length < 8){
+      alert('your password should be at least 8 characters')
+
+      document.getElementById("pw").value = ""
+      document.getElementById("confirmpw").value = ""
+
+      return;
+    }
+
     else if (usernameArray.indexOf(username) == -1){
       usernameArray.push(username);
       passwordArray.push(password);
@@ -136,14 +167,45 @@
       console.log(JSON.parse(localStorage.getItem('password')))
 
       alert('You have successfully registered. Please proceed to the login page!')
+
+      document.getElementById("pw").value = ""
+      document.getElementById("confirmpw").value = ""
+      document.getElementById("username").value = ""
+
       window.location.href="login.html"
        }
 
     else{
       alert('username already exist, please proceed to login page!')
+
+      document.getElementById("pw").value = ""
+      document.getElementById("confirmpw").value = ""
+      document.getElementById("username").value = ""
+
       window.location.href="login.html"
     }
   }
+
+//login conditions check
+var username = sessionStorage.getItem('username')
+var password = sessionStorage.getItem('password')
+
+if (password == null){
+                
+}
+
+else if (password == undefined){
+                         
+}
+
+else{
+  window.location.href="index.html"
+}
+
+//go login page
+function login(){
+  window.location.href="login.html"
+}
 
 </script>
 

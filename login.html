@@ -52,7 +52,8 @@
     cursor:pointer;
  }
 
-.btn:hover{
+.btn:hover,
+.btn:active{
   background-color: rgba(162, 180, 61,0.8);
 }
 
@@ -66,7 +67,8 @@
   padding:5px;
 }
 
-#goreg:hover{
+#goreg:hover,
+#goreg:active{
   background-color:rgb(67, 165, 133);
 }
 
@@ -99,8 +101,14 @@ function login(){
 
   event.preventDefault();
 
-  var username = document.getElementById("user").value
-  var password = document.getElementById("pw").value
+  var usernameUntrimmed = document.getElementById("user").value
+  var passwordUntrimmed = document.getElementById("pw").value
+
+  var usernameCap = usernameUntrimmed.trim()
+  var passwordCap = passwordUntrimmed.trim()
+
+  var username = usernameCap.toLowerCase()
+  var password = passwordCap.toLowerCase()
 
   var i = usernameArray.indexOf(username)
 
@@ -111,6 +119,16 @@ function login(){
 
   else if (document.getElementById("pw").value == ""){
     alert('password is required')
+    return;
+  }
+  
+  else if (username.length < 4){
+    alert('username should be at least 4 characters long!')
+    return;
+  }
+
+  else if (password.length < 8){
+    alert('password should be at least 8 characters long!')
     return;
   }
 
@@ -138,6 +156,21 @@ function goreg(){
   window.location.href="reg.html"
 }
 
+//login conditions check
+var username = sessionStorage.getItem('username')
+var password = sessionStorage.getItem('password')
+
+if (password == null){
+                
+}
+
+else if (password == undefined){
+                         
+}
+
+else{
+  window.location.href="index.html"
+}
 </script>
 </body>
 </html>
