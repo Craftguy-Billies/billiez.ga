@@ -87,7 +87,6 @@ window.location.href="login.html"
 //welcome words
 var cappedusername = username.toUpperCase()
 document.getElementById('welcome').innerHTML = "Welcome, " + cappedusername + "!"
-document.getElementById('count').innerHTML = "You have been to my site " + gettimes() + " before."
 
 //change password
 function changepw(){
@@ -162,6 +161,9 @@ return ("0 times");
 //If the number is 0, then return "0 times."
 
 }
+
+//display visited times
+document.getElementById('count').innerHTML = "You have been to my site " + gettimes() + " before."
 
         </script>
     </body>
