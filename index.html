@@ -41,7 +41,7 @@ body{
 
         </style>
     </head>
-    <body>
+    <body onload="runCookie()">
 <div class="welcome" id="welcome"></div>
 <input type="button" class="btn" id="logout" onclick="logout()" value="Logout">
         <script type="text/javascript" lang="javascript">
@@ -79,7 +79,9 @@ function setCookie(cName, cValue, expDays) {
         document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
 }
 // Apply setCookie
-setCookie(visitor, visitor, 30);
+ function runCookie(){
+    setCookie(visitor, visitor, 30);
+ }
         </script>
     </body>
 </html>
