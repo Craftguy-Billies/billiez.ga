@@ -40,6 +40,31 @@ body{
 }
 
         </style>
+        <script type="text/javascript" lang="javascript>
+//cookie
+var cookie = document.cookie;
+If (cookie != null && cookie != undefined){
+If (cookie.length>0){
+var imageSeen = cookie.split(";")[0].split("=")[1];
+var seenCount= parseInt(cookie.split(";")[1].split("=")[1]);
+
+//Not first time visit!!
+seenCount++;
+
+ImageToShow= imageSeen;//just do wtv u need to to show the imageSeen
+
+//Then save the cookie again
+
+document.cookie = "image=green;visited="+seenCount+";";
+
+
+}}
+else{
+//Treat as first time visit
+document.cookie = "image=green;visited=1;";
+}
+
+</script>
     </head>
     <body>
 <div class="welcome" id="welcome"></div>
@@ -70,29 +95,6 @@ window.location.href="login.html"
 //welcome words
 var cappedusername = username.toUpperCase()
 document.getElementById('welcome').innerHTML = "Welcome, " + cappedusername + "!"
-
-//cookie
-var cookie = document.cookie;
-If (cookie != null && cookie != undefined){
-If (cookie.length>0){
-var imageSeen = cookie.split(";")[0].split("=")[1];
-var seenCount= parseInt(cookie.split(";")[1].split("=")[1]);
-
-//Not first time visit!!
-seenCount++;
-
-ImageToShow= imageSeen;//just do wtv u need to to show the imageSeen
-
-//Then save the cookie again
-
-document.cookie = "image=green;visited="+seenCount+";";
-
-
-}}
-else{
-//Treat as first time visit
-document.cookie = "image=green;visited=1;";
-}
 </script>
         </script>
     </body>
